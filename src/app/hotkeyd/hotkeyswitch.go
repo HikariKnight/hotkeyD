@@ -15,7 +15,7 @@ func HotkeySwitch(s string) uint32 {
 	// If our hotkey is more than 1 character
 	if len(s) == 1 {
 		// Convert the string from the config into a rune/char
-		r := []rune(s)
+		r := []rune(strings.ToUpper(s))
 
 		// Return the rune/int32 as an uint32
 		returnval = uint32(r[0])
