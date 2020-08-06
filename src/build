@@ -5,12 +5,12 @@ mkdir $SCRIPTDIR/../bin
 
 if [ $1 == "debug" ]
 then
-    env GOOS=windows go build ${@:2} -o "$SCRIPTDIR/../bin/vm-detach-debug.exe" -v "$SCRIPTDIR/app/vm-detach.go"
+    env GOOS=windows go build ${@:2} -o "$SCRIPTDIR/../bin/hotkeyd-debug.exe" -v "$SCRIPTDIR/app/hotkeyd.go"
 elif [ $1 == "release" ]
 then
-    env GOOS=windows go build ${@:2} -o "$SCRIPTDIR/../bin/vm-detach.exe" -v -ldflags -H=windowsgui "$SCRIPTDIR/app/vm-detach.go"
+    env GOOS=windows go build ${@:2} -o "$SCRIPTDIR/../bin/hotkeyd.exe" -v -ldflags -H=windowsgui "$SCRIPTDIR/app/hotkeyd.go"
 else
-    env GOOS=windows go build $@ -o "$SCRIPTDIR/../bin/vm-detach.exe" -v -ldflags -H=windowsgui "$SCRIPTDIR/app/vm-detach.go"
+    env GOOS=windows go build $@ -o "$SCRIPTDIR/../bin/hotkeyd.exe" -v -ldflags -H=windowsgui "$SCRIPTDIR/app/hotkeyd.go"
 fi
 
 cp "$SCRIPTDIR/hotkeys.ini" "$SCRIPTDIR/../bin"
