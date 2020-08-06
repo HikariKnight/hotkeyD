@@ -1,4 +1,4 @@
-package vmdetach
+package hotkeyd
 
 // Import the libraries we need
 import (

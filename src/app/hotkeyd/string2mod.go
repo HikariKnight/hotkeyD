@@ -1,4 +1,4 @@
-package vmdetach
+package hotkeyd
 
 import (
 	"strings"
