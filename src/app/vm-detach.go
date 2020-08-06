@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"strings"
 
-	"./vmdetach"
+	"./hotkeyd"
 
 	"github.com/MakeNowJust/hotkey"
 	"gopkg.in/ini.v1"
@@ -29,13 +29,13 @@ func main() {
 	cfg, cfgerr := ini.Load("hotkeys.ini")
 	// If we cannot read the file we use default values
 	if cfgerr != nil {
-		fmt.Printf("Fail to read file: %v", cfgerr)
+		fmt.Printf("Fail to read file: %v\n", cfgerr)
 		fmt.Println("Using defaults instead")
 
 		if runtime.GOOS == "windows" {
 			// Make a hotkey to run putty with our profile
 			hkey.Register(hotkey.Ctrl+hotkey.Alt, hotkey.SPACE, func() {
-				vmdetach.Detach()
+				hotkeyd.Launch(false, "cmd.exe")
 			})
 		}
 	} else {
@@ -49,16 +49,16 @@ func main() {
 		var intKey = hotkey.None
 
 		// Convert the modkeys to a hotkey.Modifier
-		intKey = vmdetach.String2Mod(modKeys)
+		intKey = hotkeyd.String2Mod(modKeys)
 
 		// Get the hotkey from settings and convert to uint32
-		var intHotKey uint32 = vmdetach.HotkeySwitch(hotKey)
+		var intHotKey uint32 = hotkeyd.HotkeySwitch(hotKey)
 
 		if runtime.GOOS == "windows" {
 			// Make our hotkey
 			hkey.Register(intKey, intHotKey, func() {
 				// Execute putty and detach our mkb from VM
-				vmdetach.Detach()
+				hotkeyd.Launch(false, "cmd.exe")
 			})
 		}
 	}
