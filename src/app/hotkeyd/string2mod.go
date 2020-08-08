@@ -11,9 +11,9 @@ func String2Mod(s string) hotkey.Modifier {
 	// Make a variable to contain our modifier key value
 	var intkey = hotkey.None
 
-	// If a combination of modkeys are defined
-	if strings.Contains(s, "+") {
-
+	// If a combination of modkeys are defined (the string will then contain one or more +)
+	switch strings.Contains(s, "+") {
+	case true:
 		// Split the string by +
 		keys := strings.Split(s, "+")
 
@@ -33,7 +33,8 @@ func String2Mod(s string) hotkey.Modifier {
 				intkey += hotkey.Win
 			}
 		}
-	} else {
+	case false:
+		// Convert our single modkey to a hotkey.modifier
 		if strings.EqualFold(s, "ALT") {
 			intkey += hotkey.Alt
 		}
@@ -47,5 +48,7 @@ func String2Mod(s string) hotkey.Modifier {
 			intkey += hotkey.Win
 		}
 	}
+
+	// Return the hotkey.modifier value
 	return intkey
 }
