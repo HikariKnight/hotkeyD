@@ -12,7 +12,9 @@ For now this is what works<br>
 TODO:
 * Possible GUI for editing hotkeys.ini? 🤔
 <br>
+
 #
+
 ### Why use this over AutoHotKey?
 This is not meant as a replacement for AutoHotKey, AHK is a fantastic script language and same with AutoIT which it is based on, however this project has no plans to be able to send keystrokes and manipulate windows. This is only meant to be a Launcher for your most used programs or background scripts that you want available with a simple keypress without anti-cheat software getting mad at you for using a tool that *can* be used for cheating.
 
