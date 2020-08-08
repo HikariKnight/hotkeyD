@@ -16,17 +16,45 @@ TODO:
 
 NOTE: Because there is no way to disable hotkeys in the meantime, you will have to avoid creating hotkeys that conflict with hotkeys from other programs you use, as hotkeyD does not care what is in focus.
 
-Here is an example config
+Here is an example `hotkeys.ini` config
 ```ini
+# These undefined hotkey options defines the toggle keycombo
+# This is mandatory for the daemon to work
+# but you can change the keys to what you want
+Modkeys=ctrl+alt
+Hotkey=q
+
+# Example "open notepad" hotkey
 [notepad]
 Modkeys=ctrl+alt
 Hotkey=n
 Launch=C:\windows\system32\notepad.exe
 
+# Example for utilizing cmd.exe, the "start" command and the hide window feature
+# To open a url or any known file or protocol in it's default application
 [browser]
 Modkeys=ctrl+alt
 Hotkey=t
 Launch=cmd.exe
 Args=/c "start https://github.com/HikariKnight/hotkeyd"
+Hide=true
+
+# The "name" for the hotkey serves only as a separator for the program
+# and you can use any combination of Modkeys (alt, ctrl, win, shift)
+# However the win key is often reserved for many hotkey combinations that do
+# Not exist yet
+[a hotkey can be defined with any name]
+Modkeys=alt+shift+win
+Hotkey=c
+Launch=calc.exe
+
+# There is no built in way to "quit" the application
+# This is intentional to avoid reserving more than 1 hotkey combination
+# Here is an example on how to make a quit hotkey for hotkeyD, if you ever want one
+[kill hotkeyD]
+Modkeys=alt+win
+Hotkey=q
+Launch=cmd.exe
+Args=/c "tskill hotkeyd"
 Hide=true
 ```
