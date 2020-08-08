@@ -43,7 +43,11 @@ func createHotkeys() {
 		fmt.Printf("Fail to read file: %v\n", cfgerr)
 		fmt.Println("Using defaults instead")
 
-		dialog.Alert("No hotkeys.ini found, please make one and put some configs in it. The undefined Modkeys and Hotkey entries at the very top\nare reserved for the Toggle hotkey!\n\nModkeys=ctrl+alt\nHotkey=q\n[name of hotkey]\nModkeys=ctrl+alt\nHotkey=b\nLaunch=C:\\windows\\system32\\notepad.exe\nArgs=--some random -a -r -g -s=here\nHide=false")
+		// Tell that we cannot find the hotkeys.ini file
+		dialog.Alert("No hotkeys.ini found, please make one and put some configs in it. The undefined Modkeys and Hotkey entries at the very top are reserved for the Toggle hotkey!\n\nModkeys=ctrl+alt\nHotkey=q\n[name of hotkey]\nModkeys=ctrl+alt\nHotkey=b\nLaunch=C:\\windows\\system32\\notepad.exe\nArgs=--some random -a -r -g -s=here\nHide=false")
+
+		// Exit with code 1
+		os.Exit(1)
 	} else {
 		for _, hotkeyName := range cfg.SectionStrings() {
 			// When we have a defined hotkey, get the hotkey config
