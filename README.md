@@ -2,8 +2,7 @@
 ## A hotkey daemon for windows that does not suck.
 
 
-Let's be honest, the hotkey system for launching programs in windows just suck.
-This is ALPHA stage software and I still need to work out a way to toggle the hotkeys on and off.
+Let's be honest, the hotkey system for launching programs in windows is just garbage, let us fix that!
 
 For now this is what works<br>
 * Assign hotkeys to launch programs
@@ -11,10 +10,13 @@ For now this is what works<br>
 * Ability to use start command through cmd with the arguments "/c start" launch default applications for things like "start https://github.com/hikariknight" to open this website in your default web browser.
 
 TODO:
-* Toggle hotkey
-* "Recreate" hotkeys when you hit the toggle hotkey again
+* Possible GUI for editing hotkeys.ini? 🤔
+<br>
+#
+### Why use this over AutoHotKey?
+This is not meant as a replacement for AutoHotKey, AHK is a fantastic script language and same with AutoIT which it is based on, however this project has no plans to be able to send keystrokes and manipulate windows. This is only meant to be a Launcher for your most used programs or background scripts that you want available with a simple keypress without anti-cheat software getting mad at you for using a tool that *can* be used for cheating.
 
-NOTE: Because there is no way to disable hotkeys in the meantime, you will have to avoid creating hotkeys that conflict with hotkeys from other programs you use, as hotkeyD does not care what is in focus.
+#
 
 Here is an example `hotkeys.ini` config
 ```ini
