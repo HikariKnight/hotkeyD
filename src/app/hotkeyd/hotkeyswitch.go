@@ -12,6 +12,145 @@ func HotkeySwitch(s string) uint32 {
 	// Make a variable for our return value
 	var returnval uint32
 
+	// Make a map for all the keycodes
+	var hotkeymap = map[string]uint32{
+		"SPACE":               hotkey.SPACE,
+		"LBUTTON":             hotkey.LBUTTON,
+		"RBUTTON":             hotkey.RBUTTON,
+		"CANCEL":              hotkey.CANCEL,
+		"MBUTTON":             hotkey.MBUTTON,
+		"XBUTTON1":            hotkey.XBUTTON1,
+		"XBUTTON2":            hotkey.XBUTTON2,
+		"BACK":                hotkey.BACK,
+		"TAB":                 hotkey.TAB,
+		"RETURN":              hotkey.RETURN,
+		"SHIFT":               hotkey.SHIFT,
+		"CONTROL":             hotkey.CONTROL,
+		"MENU":                hotkey.MENU,
+		"PAUSE":               hotkey.PAUSE,
+		"CAPITAL":             hotkey.CAPITAL,
+		"KANA":                hotkey.KANA,
+		"HANGUEL":             hotkey.HANGUEL,
+		"HANGUL":              hotkey.HANGUL,
+		"JUNJA":               hotkey.JUNJA,
+		"FINAL":               hotkey.FINAL,
+		"HANJA":               hotkey.HANJA,
+		"KANJI":               hotkey.KANJI,
+		"ESCAPE":              hotkey.ESCAPE,
+		"CONVERT":             hotkey.CONVERT,
+		"NONCONVERT":          hotkey.NONCONVERT,
+		"ACCEPT":              hotkey.ACCEPT,
+		"MODECHANGE":          hotkey.MODECHANGE,
+		"PRIOR":               hotkey.PRIOR,
+		"NEXT":                hotkey.NEXT,
+		"END":                 hotkey.END,
+		"HOME":                hotkey.HOME,
+		"LEFT":                hotkey.LEFT,
+		"UP":                  hotkey.UP,
+		"RIGHT":               hotkey.RIGHT,
+		"DOWN":                hotkey.DOWN,
+		"SELECT":              hotkey.SELECT,
+		"PRINT":               hotkey.PRINT,
+		"EXECUTE":             hotkey.EXECUTE,
+		"SNAPSHOT":            hotkey.SNAPSHOT,
+		"INSERT":              hotkey.INSERT,
+		"DELETE":              hotkey.DELETE,
+		"HELP":                hotkey.HELP,
+		"LWIN":                hotkey.LWIN,
+		"RWIN":                hotkey.RWIN,
+		"APPS":                hotkey.APPS,
+		"NUMPAD0":             hotkey.NUMPAD0,
+		"NUMPAD1":             hotkey.NUMPAD1,
+		"NUMPAD2":             hotkey.NUMPAD2,
+		"NUMPAD3":             hotkey.NUMPAD3,
+		"NUMPAD4":             hotkey.NUMPAD4,
+		"NUMPAD5":             hotkey.NUMPAD5,
+		"NUMPAD6":             hotkey.NUMPAD6,
+		"NUMPAD7":             hotkey.NUMPAD7,
+		"NUMPAD8":             hotkey.NUMPAD8,
+		"NUMPAD9":             hotkey.NUMPAD9,
+		"MULTIPLY":            hotkey.MULTIPLY,
+		"ADD":                 hotkey.ADD,
+		"SEPARATOR":           hotkey.SEPARATOR,
+		"SUBTRACT":            hotkey.SUBTRACT,
+		"DECIMAL":             hotkey.DECIMAL,
+		"DIVIDE":              hotkey.DIVIDE,
+		"F1":                  hotkey.F1,
+		"F2":                  hotkey.F2,
+		"F3":                  hotkey.F3,
+		"F4":                  hotkey.F4,
+		"F5":                  hotkey.F5,
+		"F6":                  hotkey.F6,
+		"F7":                  hotkey.F7,
+		"F8":                  hotkey.F8,
+		"F9":                  hotkey.F9,
+		"F10":                 hotkey.F10,
+		"F11":                 hotkey.F11,
+		"F12":                 hotkey.F12,
+		"F13":                 hotkey.F13,
+		"F14":                 hotkey.F14,
+		"F15":                 hotkey.F15,
+		"F16":                 hotkey.F16,
+		"F17":                 hotkey.F17,
+		"F18":                 hotkey.F18,
+		"F19":                 hotkey.F19,
+		"F20":                 hotkey.F20,
+		"F21":                 hotkey.F21,
+		"F22":                 hotkey.F22,
+		"F23":                 hotkey.F23,
+		"F24":                 hotkey.F24,
+		"NUMLOCK":             hotkey.NUMLOCK,
+		"LSHIFT":              hotkey.LSHIFT,
+		"RSHIFT":              hotkey.RSHIFT,
+		"SCROLL":              hotkey.SCROLL,
+		"LCONTROL":            hotkey.LCONTROL,
+		"RCONTROL":            hotkey.RCONTROL,
+		"LMENU":               hotkey.LMENU,
+		"RMENU":               hotkey.RMENU,
+		"BROWSER_BACK":        hotkey.BROWSER_BACK,
+		"BROWSER_FORWARD":     hotkey.BROWSER_FORWARD,
+		"BROWSER_REFRESH":     hotkey.BROWSER_REFRESH,
+		"BROWSER_STOP":        hotkey.BROWSER_STOP,
+		"BROWSER_SEARCH":      hotkey.BROWSER_SEARCH,
+		"BROWSER_FAVORITES":   hotkey.BROWSER_FAVORITES,
+		"BROWSER_HOME":        hotkey.BROWSER_HOME,
+		"VOLUME_MUTE":         hotkey.VOLUME_MUTE,
+		"VOLUME_DOWN":         hotkey.VOLUME_DOWN,
+		"VOLUME_UP":           hotkey.VOLUME_UP,
+		"MEDIA_NEXT_TRACK":    hotkey.MEDIA_NEXT_TRACK,
+		"MEDIA_PREV_TRACK":    hotkey.MEDIA_PREV_TRACK,
+		"MEDIA_STOP":          hotkey.MEDIA_STOP,
+		"MEDIA_PLAY_PAUSE":    hotkey.MEDIA_PLAY_PAUSE,
+		"LAUNCH_MAIL":         hotkey.LAUNCH_MAIL,
+		"LAUNCH_MEDIA_SELECT": hotkey.LAUNCH_MEDIA_SELECT,
+		"LAUNCH_APP1":         hotkey.LAUNCH_APP1,
+		"LAUNCH_APP2":         hotkey.LAUNCH_APP2,
+		"OEM_1":               hotkey.OEM_1,
+		"OEM_PLUS":            hotkey.OEM_PLUS,
+		"OEM_COMMA":           hotkey.OEM_COMMA,
+		"OEM_MINUS":           hotkey.OEM_MINUS,
+		"OEM_PERIOD":          hotkey.OEM_PERIOD,
+		"OEM_2":               hotkey.OEM_2,
+		"OEM_3":               hotkey.OEM_3,
+		"OEM_4":               hotkey.OEM_4,
+		"OEM_5":               hotkey.OEM_5,
+		"OEM_6":               hotkey.OEM_6,
+		"OEM_7":               hotkey.OEM_7,
+		"OEM_8":               hotkey.OEM_8,
+		"OEM_102":             hotkey.OEM_102,
+		"PROCESSKEY":          hotkey.PROCESSKEY,
+		"PACKET":              hotkey.PACKET,
+		"ATTN":                hotkey.ATTN,
+		"CRSEL":               hotkey.CRSEL,
+		"EXSEL":               hotkey.EXSEL,
+		"EREOF":               hotkey.EREOF,
+		"PLAY":                hotkey.PLAY,
+		"ZOOM":                hotkey.ZOOM,
+		"NONAME":              hotkey.NONAME,
+		"PA1":                 hotkey.PA1,
+		"OEM_CLEAR":           hotkey.OEM_CLEAR,
+	}
+
 	// If our hotkey is more than 1 character
 	switch len(s) == 1 {
 	case true:
@@ -24,278 +163,7 @@ func HotkeySwitch(s string) uint32 {
 	case false:
 		// Make switches for keys that are more than a single character
 		// And map them to the correct hotkey.modifier
-		switch strings.ToUpper(s) {
-		case "SPACE":
-			returnval = hotkey.SPACE
-		case "LBUTTON":
-			returnval = hotkey.LBUTTON
-		case "RBUTTON":
-			returnval = hotkey.RBUTTON
-		case "CANCEL":
-			returnval = hotkey.CANCEL
-		case "MBUTTON":
-			returnval = hotkey.MBUTTON
-		case "XBUTTON1":
-			returnval = hotkey.XBUTTON1
-		case "XBUTTON2":
-			returnval = hotkey.XBUTTON2
-		case "BACK":
-			returnval = hotkey.BACK
-		case "TAB":
-			returnval = hotkey.TAB
-		case "RETURN":
-			returnval = hotkey.RETURN
-		case "SHIFT":
-			returnval = hotkey.SHIFT
-		case "CONTROL":
-			returnval = hotkey.CONTROL
-		case "MENU":
-			returnval = hotkey.MENU
-		case "PAUSE":
-			returnval = hotkey.PAUSE
-		case "CAPITAL":
-			returnval = hotkey.CAPITAL
-		case "KANA":
-			returnval = hotkey.KANA
-		case "HANGUEL":
-			returnval = hotkey.HANGUEL
-		case "HANGUL":
-			returnval = hotkey.HANGUL
-		case "JUNJA":
-			returnval = hotkey.JUNJA
-		case "FINAL":
-			returnval = hotkey.FINAL
-		case "HANJA":
-			returnval = hotkey.HANJA
-		case "KANJI":
-			returnval = hotkey.KANJI
-		case "ESCAPE":
-			returnval = hotkey.ESCAPE
-		case "CONVERT":
-			returnval = hotkey.CONVERT
-		case "NONCONVERT":
-			returnval = hotkey.NONCONVERT
-		case "ACCEPT":
-			returnval = hotkey.ACCEPT
-		case "MODECHANGE":
-			returnval = hotkey.MODECHANGE
-		case "PRIOR":
-			returnval = hotkey.PRIOR
-		case "NEXT":
-			returnval = hotkey.NEXT
-		case "END":
-			returnval = hotkey.END
-		case "HOME":
-			returnval = hotkey.HOME
-		case "LEFT":
-			returnval = hotkey.LEFT
-		case "UP":
-			returnval = hotkey.UP
-		case "RIGHT":
-			returnval = hotkey.RIGHT
-		case "DOWN":
-			returnval = hotkey.DOWN
-		case "SELECT":
-			returnval = hotkey.SELECT
-		case "PRINT":
-			returnval = hotkey.PRINT
-		case "EXECUTE":
-			returnval = hotkey.EXECUTE
-		case "SNAPSHOT":
-			returnval = hotkey.SNAPSHOT
-		case "INSERT":
-			returnval = hotkey.INSERT
-		case "DELETE":
-			returnval = hotkey.DELETE
-		case "HELP":
-			returnval = hotkey.HELP
-		case "LWIN":
-			returnval = hotkey.LWIN
-		case "RWIN":
-			returnval = hotkey.RWIN
-		case "APPS":
-			returnval = hotkey.APPS
-		case "NUMPAD0":
-			returnval = hotkey.NUMPAD0
-		case "NUMPAD1":
-			returnval = hotkey.NUMPAD1
-		case "NUMPAD2":
-			returnval = hotkey.NUMPAD2
-		case "NUMPAD3":
-			returnval = hotkey.NUMPAD3
-		case "NUMPAD4":
-			returnval = hotkey.NUMPAD4
-		case "NUMPAD5":
-			returnval = hotkey.NUMPAD5
-		case "NUMPAD6":
-			returnval = hotkey.NUMPAD6
-		case "NUMPAD7":
-			returnval = hotkey.NUMPAD7
-		case "NUMPAD8":
-			returnval = hotkey.NUMPAD8
-		case "NUMPAD9":
-			returnval = hotkey.NUMPAD9
-		case "MULTIPLY":
-			returnval = hotkey.MULTIPLY
-		case "ADD":
-			returnval = hotkey.ADD
-		case "SEPARATOR":
-			returnval = hotkey.SEPARATOR
-		case "SUBTRACT":
-			returnval = hotkey.SUBTRACT
-		case "DECIMAL":
-			returnval = hotkey.DECIMAL
-		case "DIVIDE":
-			returnval = hotkey.DIVIDE
-		case "F1":
-			returnval = hotkey.F1
-		case "F2":
-			returnval = hotkey.F2
-		case "F3":
-			returnval = hotkey.F3
-		case "F4":
-			returnval = hotkey.F4
-		case "F5":
-			returnval = hotkey.F5
-		case "F6":
-			returnval = hotkey.F6
-		case "F7":
-			returnval = hotkey.F7
-		case "F8":
-			returnval = hotkey.F8
-		case "F9":
-			returnval = hotkey.F9
-		case "F10":
-			returnval = hotkey.F10
-		case "F11":
-			returnval = hotkey.F11
-		case "F12":
-			returnval = hotkey.F12
-		case "F13":
-			returnval = hotkey.F13
-		case "F14":
-			returnval = hotkey.F14
-		case "F15":
-			returnval = hotkey.F15
-		case "F16":
-			returnval = hotkey.F16
-		case "F17":
-			returnval = hotkey.F17
-		case "F18":
-			returnval = hotkey.F18
-		case "F19":
-			returnval = hotkey.F19
-		case "F20":
-			returnval = hotkey.F20
-		case "F21":
-			returnval = hotkey.F21
-		case "F22":
-			returnval = hotkey.F22
-		case "F23":
-			returnval = hotkey.F23
-		case "F24":
-			returnval = hotkey.F24
-		case "NUMLOCK":
-			returnval = hotkey.NUMLOCK
-		case "LSHIFT":
-			returnval = hotkey.LSHIFT
-		case "RSHIFT":
-			returnval = hotkey.RSHIFT
-		case "SCROLL":
-			returnval = hotkey.SCROLL
-		case "LCONTROL":
-			returnval = hotkey.LCONTROL
-		case "RCONTROL":
-			returnval = hotkey.RCONTROL
-		case "LMENU":
-			returnval = hotkey.LMENU
-		case "RMENU":
-			returnval = hotkey.RMENU
-		case "BROWSER_BACK":
-			returnval = hotkey.BROWSER_BACK
-		case "BROWSER_FORWARD":
-			returnval = hotkey.BROWSER_FORWARD
-		case "BROWSER_REFRESH":
-			returnval = hotkey.BROWSER_REFRESH
-		case "BROWSER_STOP":
-			returnval = hotkey.BROWSER_STOP
-		case "BROWSER_SEARCH":
-			returnval = hotkey.BROWSER_SEARCH
-		case "BROWSER_FAVORITES":
-			returnval = hotkey.BROWSER_FAVORITES
-		case "BROWSER_HOME":
-			returnval = hotkey.BROWSER_HOME
-		case "VOLUME_MUTE":
-			returnval = hotkey.VOLUME_MUTE
-		case "VOLUME_DOWN":
-			returnval = hotkey.VOLUME_DOWN
-		case "VOLUME_UP":
-			returnval = hotkey.VOLUME_UP
-		case "MEDIA_NEXT_TRACK":
-			returnval = hotkey.MEDIA_NEXT_TRACK
-		case "MEDIA_PREV_TRACK":
-			returnval = hotkey.MEDIA_PREV_TRACK
-		case "MEDIA_STOP":
-			returnval = hotkey.MEDIA_STOP
-		case "MEDIA_PLAY_PAUSE":
-			returnval = hotkey.MEDIA_PLAY_PAUSE
-		case "LAUNCH_MAIL":
-			returnval = hotkey.LAUNCH_MAIL
-		case "LAUNCH_MEDIA_SELECT":
-			returnval = hotkey.LAUNCH_MEDIA_SELECT
-		case "LAUNCH_APP1":
-			returnval = hotkey.LAUNCH_APP1
-		case "LAUNCH_APP2":
-			returnval = hotkey.LAUNCH_APP2
-		case "OEM_1":
-			returnval = hotkey.OEM_1
-		case "OEM_PLUS":
-			returnval = hotkey.OEM_PLUS
-		case "OEM_COMMA":
-			returnval = hotkey.OEM_COMMA
-		case "OEM_MINUS":
-			returnval = hotkey.OEM_MINUS
-		case "OEM_PERIOD":
-			returnval = hotkey.OEM_PERIOD
-		case "OEM_2":
-			returnval = hotkey.OEM_2
-		case "OEM_3":
-			returnval = hotkey.OEM_3
-		case "OEM_4":
-			returnval = hotkey.OEM_4
-		case "OEM_5":
-			returnval = hotkey.OEM_5
-		case "OEM_6":
-			returnval = hotkey.OEM_6
-		case "OEM_7":
-			returnval = hotkey.OEM_7
-		case "OEM_8":
-			returnval = hotkey.OEM_8
-		case "OEM_102":
-			returnval = hotkey.OEM_102
-		case "PROCESSKEY":
-			returnval = hotkey.PROCESSKEY
-		case "PACKET":
-			returnval = hotkey.PACKET
-		case "ATTN":
-			returnval = hotkey.ATTN
-		case "CRSEL":
-			returnval = hotkey.CRSEL
-		case "EXSEL":
-			returnval = hotkey.EXSEL
-		case "EREOF":
-			returnval = hotkey.EREOF
-		case "PLAY":
-			returnval = hotkey.PLAY
-		case "ZOOM":
-			returnval = hotkey.ZOOM
-		case "NONAME":
-			returnval = hotkey.NONAME
-		case "PA1":
-			returnval = hotkey.PA1
-		case "OEM_CLEAR":
-			returnval = hotkey.OEM_CLEAR
-		}
+		returnval = hotkeymap[strings.ToUpper(s)]
 	}
 
 	// Return our unint32 value
