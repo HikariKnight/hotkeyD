@@ -22,18 +22,16 @@ func String2Mod(s string) hotkey.Modifier {
 		}
     } else {
 		// Convert our single modkey to a hotkey.modifier
-		if strings.EqualFold(s, "ALT") {
-			intkey += hotkey.Alt
-		}
-		if strings.EqualFold(s, "CTRL") {
-			intkey += hotkey.Ctrl
-		}
-		if strings.EqualFold(s, "SHIFT") {
-			intkey += hotkey.Shift
-		}
-		if strings.EqualFold(s, "WIN") {
-			intkey += hotkey.Win
-		}
+        switch {
+            case strings.EqualFold(s, "ALT"):
+                intkey += hotkey.Alt
+            case strings.EqualFold(s, "CTRL"):
+                intkey += hotkey.Ctrl
+            case strings.EqualFold(s, "SHIFT"):
+                intkey += hotkey.Shcaset
+            case strings.EqualFold(s, "WIN"):
+                intkey += hotkey.Win
+        }
 	}
 
 	// Return the hotkey.modifier value
