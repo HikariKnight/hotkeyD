@@ -67,13 +67,12 @@ func CreateHotkeys() {
 					fmt.Printf(filename)
 
 					// Check if --pause is passed to the arguments
-					switch strings.Contains(strings.Join(os.Args[1:], " "), "--pause") {
-					case false:
-						// Start paused instance
-						hotkeyd.Launch(false, filename, "--pause")
-					case true:
+					if strings.Contains(strings.Join(os.Args[1:], " "), "--pause") {
 						// Start normal instance
 						hotkeyd.Launch(false, filename)
+                    } else {
+						// Start paused instance
+						hotkeyd.Launch(false, filename, "--pause")
 					}
 					// Exit this hotkeyd instance
 					os.Exit(0)
@@ -82,8 +81,7 @@ func CreateHotkeys() {
 			default:
 				// For any other hotkey definitions
 				// Check if --pause is passed as an argument
-				switch strings.Contains(strings.Join(os.Args[1:], " "), "--pause") {
-				case false:
+				if !strings.Contains(strings.Join(os.Args[1:], " "), "--pause") {
 					// If we are not in paused mode
 					// Check if the hotkey options are not undefined
 					if launchCMD != "" && modKeys != "" && hotKey != "" {

@@ -12,41 +12,26 @@ func String2Mod(s string) hotkey.Modifier {
 	var intkey = hotkey.None
 
 	// If a combination of modkeys are defined (the string will then contain one or more +)
-	switch strings.Contains(s, "+") {
-	case true:
+	if strings.Contains(s, "+") {
 		// Split the string by +
 		keys := strings.Split(s, "+")
 
 		// For every key in the combination
 		for v := range keys {
-			// Convert the key to a hotkey.modifier
-			if strings.EqualFold(keys[v], "ALT") {
-				intkey += hotkey.Alt
-			}
-			if strings.EqualFold(keys[v], "CTRL") {
-				intkey += hotkey.Ctrl
-			}
-			if strings.EqualFold(keys[v], "SHIFT") {
-				intkey += hotkey.Shift
-			}
-			if strings.EqualFold(keys[v], "WIN") {
-				intkey += hotkey.Win
-			}
+            intkey += String2Mod(keys[v])
 		}
-	case false:
+    } else {
 		// Convert our single modkey to a hotkey.modifier
-		if strings.EqualFold(s, "ALT") {
-			intkey += hotkey.Alt
-		}
-		if strings.EqualFold(s, "CTRL") {
-			intkey += hotkey.Ctrl
-		}
-		if strings.EqualFold(s, "SHIFT") {
-			intkey += hotkey.Shift
-		}
-		if strings.EqualFold(s, "WIN") {
-			intkey += hotkey.Win
-		}
+        switch {
+            case strings.EqualFold(s, "ALT"):
+                intkey += hotkey.Alt
+            case strings.EqualFold(s, "CTRL"):
+                intkey += hotkey.Ctrl
+            case strings.EqualFold(s, "SHIFT"):
+                intkey += hotkey.Shift
+            case strings.EqualFold(s, "WIN"):
+                intkey += hotkey.Win
+        }
 	}
 
 	// Return the hotkey.modifier value
