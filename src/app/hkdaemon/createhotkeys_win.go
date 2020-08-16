@@ -17,7 +17,7 @@ import (
 	"tawesoft.co.uk/go/dialog"
 )
 
-// CreateHotKeys creates hotkeys based on the configs from hotkeys.ini
+// CreateHotkeys creates hotkeys based on the configs from hotkeys.ini
 func CreateHotkeys() {
 	// Make a new hotkey definition
 	hkey := hotkey.New()
@@ -70,7 +70,7 @@ func CreateHotkeys() {
 					if strings.Contains(strings.Join(os.Args[1:], " "), "--pause") {
 						// Start normal instance
 						hotkeyd.Launch(false, filename)
-                    } else {
+					} else {
 						// Start paused instance
 						hotkeyd.Launch(false, filename, "--pause")
 					}
