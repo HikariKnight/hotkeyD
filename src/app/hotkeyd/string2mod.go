@@ -28,7 +28,7 @@ func String2Mod(s string) hotkey.Modifier {
             case strings.EqualFold(s, "CTRL"):
                 intkey += hotkey.Ctrl
             case strings.EqualFold(s, "SHIFT"):
-                intkey += hotkey.Shcaset
+                intkey += hotkey.Shift
             case strings.EqualFold(s, "WIN"):
                 intkey += hotkey.Win
         }
