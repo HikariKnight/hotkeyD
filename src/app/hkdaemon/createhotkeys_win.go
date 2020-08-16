@@ -82,8 +82,7 @@ func CreateHotkeys() {
 			default:
 				// For any other hotkey definitions
 				// Check if --pause is passed as an argument
-				switch strings.Contains(strings.Join(os.Args[1:], " "), "--pause") {
-				case false:
+				if !strings.Contains(strings.Join(os.Args[1:], " "), "--pause") {
 					// If we are not in paused mode
 					// Check if the hotkey options are not undefined
 					if launchCMD != "" && modKeys != "" && hotKey != "" {

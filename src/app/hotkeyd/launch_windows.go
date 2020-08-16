@@ -12,8 +12,7 @@ import (
 func Launch(hidden bool, cmd string, args ...string) {
 	// Configure the command we will run
 	cmnd := exec.Command(cmd, args...)
-	switch hidden {
-	case true:
+	if hidden {
 		// Hide the putty window
 		cmnd.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 	}
