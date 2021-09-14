@@ -20,7 +20,7 @@ This is not meant as a replacement for AutoHotKey, AHK is a fantastic script lan
 
 #
 
-If you plan to use special characters like `.` or `/` then please refer to https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes as some special keys have weird names inside windows like<br>
+If you plan to use special characters like `.` or `/` then please refer to [Windows Virtual Key Codes documentation](https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes) as some special keys have weird names inside windows like<br>
 `OEM_COMMA` for `,`<br>
 `OEM_PERIOD` for `.`<br>
 and `OEM_2` for `/`
@@ -68,4 +68,21 @@ Hotkey=q
 Launch=cmd.exe
 Args=/c "tskill hotkeyd"
 Hide=true
+```
+
+# 
+
+### Build instructions
+There is a [build script](https://github.com/HikariKnight/hotkeyD/blob/master/src/build) written in bash since I developed this on Linux so I needed to cross compile it to use it in my VM, but it should be as simple as running this in the same folder as [hotkeyd.go](https://github.com/HikariKnight/hotkeyD/blob/master/src/app/hotkeyd.go)<br>
+`go build -o hotkeyd.exe -v -ldflags -H=windowsgui hotkeyd.go`
+
+If you are using Linux or MacOS as your build machine just run the build script with either `debug` or `release` as the parameter.
+The debug build just omits the `-ldflags -H=windowsgui` parameters from the build command which hides the terminal window that go programs tend to have.
+
+Just make sure you `go get` these dependencies before building
+```
+go get github.com/MakeNowJust/hotkey
+go get github.com/kardianos/osext
+go get gopkg.in/ini.v1
+go get tawesoft.co.uk/go/dialog
 ```
