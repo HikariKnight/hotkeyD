@@ -20,6 +20,13 @@ This is not meant as a replacement for AutoHotKey, AHK is a fantastic script lan
 
 #
 
+If you plan to use special characters like `.` or `/` then please refer to https://docs.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes as some special keys have weird names inside windows like<br>
+`OEM_COMMA` for `,`<br>
+`OEM_PERIOD` for `.`<br>
+and `OEM_2` for `/`
+
+#
+
 Here is an example `hotkeys.ini` config
 ```ini
 # These undefined hotkey options defines the toggle keycombo
