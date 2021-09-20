@@ -46,6 +46,10 @@ func CreateHotkeys() {
 			var modKeys string = hotkeyIni.Key("Modkeys").MustString("")
 			var hotKey string = hotkeyIni.Key("Hotkey").MustString("")
 
+			// Get the workDir as an escaped string
+			// (however if the directory is the root of a windows disk like D:\ then it still must be quoted!)
+			var workDir string = hotkeyIni.Key("Workdir").MustString(``)
+
 			switch hotkeyName {
 			case "DEFAULT":
 				// If the section is named DEFAULT (or empty which returns DEFAULT)
@@ -69,10 +73,10 @@ func CreateHotkeys() {
 					// Check if --pause is passed to the arguments
 					if strings.Contains(strings.Join(os.Args[1:], " "), "--pause") {
 						// Start normal instance
-						hotkeyd.Launch(false, filename)
+						hotkeyd.Launch(false, filename, workDir)
 					} else {
 						// Start paused instance
-						hotkeyd.Launch(false, filename, "--pause")
+						hotkeyd.Launch(false, filename, workDir, "--pause")
 					}
 					// Exit this hotkeyd instance
 					os.Exit(0)
@@ -123,7 +127,7 @@ func CreateHotkeys() {
 						hkey.Register(intKey, intHotKey, func() {
 							fmt.Println("Hotkey Pressed!")
 							// Execute the defined program
-							hotkeyd.Launch(hidewindow, launchCMD, args...)
+							hotkeyd.Launch(hidewindow, launchCMD, workDir, args...)
 						})
 					}
 				}
