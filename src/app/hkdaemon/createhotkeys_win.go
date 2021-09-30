@@ -1,3 +1,4 @@
+//go:build windows
 // +build windows
 
 package hkdaemon
@@ -9,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"../hotkeyd"
+	"github.com/HikariKnight/hotkeyD/src/app/hotkeyd"
 
 	"github.com/MakeNowJust/hotkey"
 	"github.com/kardianos/osext"

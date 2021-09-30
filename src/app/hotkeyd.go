@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"./hkdaemon"
+	"github.com/HikariKnight/hotkeyD/src/app/hkdaemon"
 )
 
 // Make a main function
