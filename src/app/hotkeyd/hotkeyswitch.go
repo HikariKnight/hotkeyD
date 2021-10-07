@@ -158,7 +158,7 @@ func HotkeySwitch(s string) uint32 {
 
 		// Return the rune/int32 as an uint32
 		returnval = uint32(r[0])
-    } else {
+	} else {
 		// Make switches for keys that are more than a single character
 		// And map them to the correct hotkey.modifier
 		returnval = hotkeymap[strings.ToUpper(s)]
