@@ -35,6 +35,13 @@ Here is an example `hotkeys.ini` config
 Modkeys=ctrl+alt
 Hotkey=q
 
+# HotkeyD has a built in function to close the active window
+# However due to limitations in the Windows API the win key cannot be used alone as a modkey!
+# The entry for this hotkey has to be named [CloseWindow]
+[CloseWindow]
+Modkeys=alt
+Hotkey=q
+
 # Example "open notepad" hotkey
 [notepad]
 Modkeys=ctrl+alt
@@ -93,4 +100,5 @@ go get github.com/MakeNowJust/hotkey
 go get github.com/kardianos/osext
 go get gopkg.in/ini.v1
 go get tawesoft.co.uk/go/dialog
+go get github.com/micmonay/keybd_event
 ```
