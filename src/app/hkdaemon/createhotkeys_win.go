@@ -65,7 +65,7 @@ func CreateHotkeys() {
 
 				// Make our hotkey
 				hkey.Register(intKey, intHotKey, func() {
-					fmt.Println("Hotkey Pressed!")
+					fmt.Println("Pause hotkey Pressed!")
 
 					// Get the absolute path to the executable
 					filename, _ := osext.Executable()
@@ -82,6 +82,32 @@ func CreateHotkeys() {
 					// Exit this hotkeyd instance
 					os.Exit(0)
 				})
+
+			case "CloseWindow":
+				// If the section is named CloseWindow
+				// Check if --pause is passed as an argument
+				if !strings.Contains(strings.Join(os.Args[1:], " "), "--pause") {
+					// If we are not in paused mode
+					// Check if the hotkey options are not undefined
+					if modKeys != "" && hotKey != "" {
+						// Make an empty intkey
+						var intKey = hotkey.None
+
+						// Convert the modkeys to a hotkey.Modifier
+						intKey = hotkeyd.String2Mod(modKeys)
+
+						// Get the hotkey from settings and convert to uint32
+						var intHotKey uint32 = hotkeyd.HotkeySwitch(hotKey)
+
+						// Make our hotkey
+						hkey.Register(intKey, intHotKey, func() {
+							fmt.Println("CloseWindow hotkey Pressed!")
+
+							//Send ALT+F4
+							hotkeyd.CloseWindow()
+						})
+					}
+				}
 
 			default:
 				// For any other hotkey definitions

@@ -1,6 +1,6 @@
 module github.com/HikariKnight/hotkeyD
 
-go 1.17
+go 1.16
 
 require (
 	github.com/MakeNowJust/hotkey v0.0.0-20200628032113-41fa0caa507a
@@ -11,6 +11,7 @@ require (
 
 require (
 	github.com/lxn/win v0.0.0-20210218163916-a377121e959e // indirect
+	github.com/micmonay/keybd_event v1.1.1 // indirect
 	github.com/stretchr/testify v1.7.0 // indirect
 	golang.org/x/sys v0.0.0-20210309074719-68d13333faf2 // indirect
 )
