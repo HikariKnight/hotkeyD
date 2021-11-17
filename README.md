@@ -8,6 +8,7 @@ For now this is what works<br>
 * Assign hotkeys to launch programs
 * Launch programs and scripts in a hidden window state (good for automation scripts that you dont want to steal focus)
 * Ability to use start command through cmd with the arguments "/c start" launch default applications for things like "start https://github.com/hikariknight" to open this website in your default web browser.
+* Remap ALT+F4 to another button combination like ALT+Q (ALT+F4 will still work)
 
 TODO:
 * Possible GUI for editing hotkeys.ini? 🤔
