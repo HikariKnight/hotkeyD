@@ -39,6 +39,8 @@ Hotkey=q
 # HotkeyD has a built in function to close the active window
 # However due to limitations in the Windows API the win key cannot be used alone as a modkey!
 # The entry for this hotkey has to be named [CloseWindow]
+# This function emulates you pressing alt+f4 and should work on 98% of windows applications 
+# (i have only seen it not work for ".msc" applications in windows so far)
 [CloseWindow]
 Modkeys=alt
 Hotkey=q
