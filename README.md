@@ -14,6 +14,8 @@ TODO:
 * Possible GUI for editing hotkeys.ini? 🤔
 <br>
 
+NOTE: Some antiviruses might falsly label this as unwanted software because it is written in go and interacts with keypresses. This is a false positive and you are free to check the source code and even build the project yourself.
+
 #
 
 ### Why use this over AutoHotKey?
