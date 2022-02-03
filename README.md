@@ -28,9 +28,11 @@ If you plan to use special characters like `.` or `/` then please refer to [Wind
 `OEM_PERIOD` for `.`<br>
 and `OEM_2` for `/`
 
+If you would like to look at some practical examples, [Sokoloft](https://github.com/Sokoloft/Stuff/tree/main/hotkeyD_config) publishes his hotkeyd config and scripts [here](https://github.com/Sokoloft/Stuff/tree/main/hotkeyD_config)
+
 #
 
-Here is an example `hotkeys.ini` config
+Here is an example of a basic `hotkeys.ini` config
 ```ini
 # These undefined hotkey options defines the toggle keycombo
 # This is mandatory for the daemon to work
